@@ -1,0 +1,1 @@
+![alt demo-image](https://raw.githubusercontent.com/shahedex/CUET-bus-tracker/master/static/demo.png)

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <title>GitHub Repo File Count</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+   
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  
+        <style>
+          body {
+            height: 100vh;
+            background: linear-gradient(rgb(38, 186, 202), rgb(50, 68, 167));
+            color: white;
+          }
+        .input-class-div {
+          margin-left: 20%;
+          margin-right: 20%;
+        }
+        </style>
+  
+  </head>
+  <body>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/">GitHub API</a>
+                  </li>
+                </ul>
+              </nav>
+    <!--The div element for the rest -->
+    <br>
+    <h3 align="center">GitHub Repository File Count</h3> 
+    <h5 align="center">(Paste the URL of the Repository to count the files)</h5><hr>
+    <br>
+
+    <div align="center" class="input-class-div">
+      <form method="GET" action="/getfilecount">
+          <div class="form-group">
+            <input name="user-url" id="user-url" class="form-control form-control-lg" type="text" required="true" placeholder="Paste URL Here: https://github.com/shahedex/Weather_App">
+          </div>
+        <a href="#" id="countrepofile" class="btn btn-lg btn-success">Count Files</a>
+        <button type="submit" class="btn btn-lg btn-success">Get JSON</button>
+      </form>
+      <br><br>
+      <h4>This repository page contains: <span id=result>?</span> files</h4>
+    </div>
+
+    <script type=text/javascript>
+      $(function() {
+        $('a#countrepofile').bind('click', function() {
+          $.getJSON('http://localhost:5000/getfilecount', {
+            user_url: $('input[name="user-url"]').val(),
+          }, function(data) {
+            $("#result").text(data.file_count);
+          });
+          return false;
+        });
+      });
+    </script>
+
+
+  </body>
+</html>
+
+
