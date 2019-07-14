@@ -5,7 +5,7 @@ import requests
 import time
 
 app = Flask(__name__)
-headers = {'token':'replace_this_with_your_own_github_token'}
+headers = {'token':'72987d96909fb524de3a646b0c882e4fc55f8c20'}
 
 @app.route('/')
 def runpy():
